@@ -9,3 +9,6 @@ In Cloudflare, add these encrypted Worker secrets:
 Do not put these secrets in GitHub.
 
 Deploy with `npx wrangler deploy`.
+
+
+Typography: Rustic Roadway is bundled locally in `RusticRoadway.otf` and used throughout the site.

@@ -377,3 +377,42 @@ body:not(.lock-page) #answer{
   font-family: "Rustic Roadway", "Cormorant Garamond", serif !important;
   font-weight: 400 !important;
 }
+
+/* FINAL TYPOGRAPHY: Rustic Roadway throughout the entire website */
+@font-face{
+  font-family:"Rustic Roadway";
+  src:url("/RusticRoadway.otf") format("opentype");
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+html,body,button,input{
+  font-family:"Rustic Roadway", cursive !important;
+}
+body{color:#f5dfc2}
+.small-title,.subtitle,.mirror-hint,.password-box input,.unlock-button,
+.message,.message p,.transition,.buttons button,#answer,.saji{
+  font-family:"Rustic Roadway", cursive !important;
+}
+.secret-card h1,.handwritten,.proposal-card h2,.proposal-card h3,
+.proposal-card .special,.proposal-card .name,.proposal-card .question{
+  font-family:"Rustic Roadway", cursive !important;
+  font-weight:400 !important;
+}
+
+.proposal-card h3{
+  font-family:"Rustic Roadway",cursive !important;
+  font-weight:400 !important;
+  color:#f8eee2;
+  font-size:clamp(48px,10vw,88px);
+  line-height:.92;
+  margin:10px 0 0;
+  letter-spacing:.01em;
+}
+.proposal-card h2{
+  color:#f5dfad;
+  font-size:clamp(42px,8vw,72px);
+  line-height:.95;
+}
+.message{font-size:clamp(21px,3.1vw,29px);line-height:1.45}
+.transition{font-size:16px}
