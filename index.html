@@ -2,50 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Secret ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Secret</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-<div class="background-glow"></div>
-<div class="petals"><span>🌹</span><span>🌸</span><span>🌹</span><span>🌸</span><span>🌹</span><span>🌸</span><span>🌹</span><span>🌸</span></div>
-<main class="page">
-<section id="passwordScreen" class="secret-card">
-<div class="top-rose"><div class="rose-glow"></div><div class="rose">🌹</div></div>
-<p class="eyebrow">A LITTLE SECRET</p>
-<div class="ornament"><span></span><b>♡</b><span></span></div>
-<h1>For You</h1>
-<p class="subtitle">A Little Something for Saji <span>♥</span></p>
-<div class="ornament small"><span></span><b>♥</b><span></span></div>
-<p class="handwritten">Unforgettable ♡</p>
-<div class="gold-line"></div>
-<form id="passwordForm">
-<div class="password-box">
-<span class="lock-icon">♙</span>
-<input id="passwordInput" type="password" placeholder="Enter password" autocomplete="off" required>
-<button type="button" id="showPassword" aria-label="Show password">◉</button>
+<body class="lock-page">
+<div class="lock-petals" aria-hidden="true">
+  <span>🌹</span><span>🌸</span><span>🌹</span><span>🌸</span><span>🌹</span>
 </div>
-<button type="submit" id="unlockButton" class="unlock-button"><span class="button-lock">♙</span>Unlock</button>
-<p id="errorMessage"></p>
-</form>
-<div class="bottom-ornament"><span></span><span>🌹</span><span></span></div>
+
+<section id="passwordScreen" class="secret-card">
+  <div class="rose-wrap">
+    <div class="rose-glow"></div>
+    <div class="rose">🌹</div>
+  </div>
+
+  <p class="small-title">A LITTLE SECRET</p>
+  <div class="gold-ornament"><span></span><b>♡</b><span></span></div>
+
+  <h1>For You</h1>
+
+  <p class="subtitle">A Little Something for Saji <strong>♥</strong></p>
+
+  <div class="gold-ornament second"><span></span><b>♥</b><span></span></div>
+
+  <p class="handwritten">Unforgettable ♡</p>
+
+  <form id="passwordForm" autocomplete="off">
+    <div class="password-box">
+      <span class="lock-symbol">♙</span>
+      <input id="passwordInput" type="password" placeholder="Enter password" required>
+      <button type="button" id="showPassword" aria-label="Show password">◉</button>
+    </div>
+
+    <button id="unlockButton" type="submit" class="unlock-button">
+      <span>♙</span> Unlock
+    </button>
+
+    <p id="errorMessage" role="alert"></p>
+  </form>
+
+  <div class="bottom-ornament"><span></span><b>🌹</b><span></span></div>
 </section>
-</main>
+
 <script>
-const form=document.getElementById("passwordForm"),input=document.getElementById("passwordInput"),button=document.getElementById("unlockButton"),error=document.getElementById("errorMessage"),showPassword=document.getElementById("showPassword");
-form.addEventListener("submit",async e=>{
-e.preventDefault(); error.textContent=""; button.disabled=true;
-try{
-const r=await fetch("/unlock",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:input.value})});
-if(r.ok){button.innerHTML="♥ Unlocked";setTimeout(()=>location.href="/proposal",350);return}
-error.textContent="Not quite... try again ❤️";input.value="";input.focus();
-}catch(x){error.textContent="Something went wrong. Please try again."}
-button.disabled=false;
+const form = document.getElementById("passwordForm");
+const input = document.getElementById("passwordInput");
+const button = document.getElementById("unlockButton");
+const error = document.getElementById("errorMessage");
+const showPassword = document.getElementById("showPassword");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  error.textContent = "";
+  button.disabled = true;
+
+  try {
+    const response = await fetch("/unlock", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({password: input.value})
+    });
+
+    if (response.ok) {
+      button.innerHTML = "♥ Unlocked";
+      setTimeout(() => location.href = "/proposal", 300);
+      return;
+    }
+
+    error.textContent = "Not quite... try again ❤️";
+    input.value = "";
+    input.focus();
+  } catch (e) {
+    error.textContent = "Something went wrong. Please try again.";
+  }
+
+  button.disabled = false;
 });
-showPassword.onclick=()=>input.type=input.type==="password"?"text":"password";
+
+showPassword.addEventListener("click", () => {
+  input.type = input.type === "password" ? "text" : "password";
+});
 </script>
 </body>
 </html>
