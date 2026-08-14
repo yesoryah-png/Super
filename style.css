@@ -352,3 +352,28 @@ body:not(.lock-page) #answer{
   body:not(.lock-page) .proposal-card h2{font-size:42px}
   body:not(.lock-page) .proposal-card h3{font-size:46px}
 }
+
+/* User-provided Rustic Roadway font */
+@font-face {
+  font-family: "Rustic Roadway";
+  src: url("/RusticRoadway.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Rustic Roadway is used for the romantic headline/decorative elements. */
+.proposal-card h2,
+.proposal-card .question,
+.proposal-card .special,
+.proposal-card .name,
+.handwritten {
+  font-family: "Rustic Roadway", "Cormorant Garamond", serif !important;
+  font-weight: 400 !important;
+}
+
+.secret-card h1,
+.secret-card .handwritten {
+  font-family: "Rustic Roadway", "Cormorant Garamond", serif !important;
+  font-weight: 400 !important;
+}
